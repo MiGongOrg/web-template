@@ -1,0 +1,10 @@
+#app {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  border: 2px solid tomato;
+  background-position: center;
+  background-size: 100% 100%;
+  background-image: url("../images/avatar.jpg");
+  background-repeat: no-repeat;
+}
