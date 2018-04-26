@@ -32,8 +32,10 @@ module.exports = {
       template: VARIABLE.htmlPlugin.template,
       hash: true,
       minify: {
-        // html 去除空格
+        // 去除空格
         collapseWhitespace: true
+        // 删除注释
+        removeComments: true
       }
     }),
     // 提取公共代码
@@ -43,9 +45,7 @@ module.exports = {
       minChunks: VARIABLE.CommonsChunkPlugin.minChunks,
     }),
     // 清空构建目录 ./build 文件夹下的所有文件
-    new CleanWebpackPlugin(VARIABLE.buildDir),
-    // 使用 webpack 内部插件
-    new webpack.NamedModulesPlugin()
+    new CleanWebpackPlugin(VARIABLE.buildDir)
   ],
 
   // 加载器配置项
@@ -118,7 +118,7 @@ if (VARIABLE.isProduction) {
 
   // 生产环境下的配置
   module.exports.module.rules.push({
-    // Css依赖配置项
+    // CSS 依赖配置项
     test: /\.(scss|sass|css)$/,
     use: ExtractTextPlugin.extract({
       fallback: "style-loader",
@@ -132,7 +132,7 @@ if (VARIABLE.isProduction) {
   });
 
   module.exports.plugins = (module.exports.plugins || []).concat([
-    // 提取css
+    // 提取 CSS 文件
     new ExtractTextPlugin(VARIABLE.output.css)
   ]);
 
@@ -140,7 +140,7 @@ if (VARIABLE.isProduction) {
 
   // 开发环境下的配置
   module.exports.module.rules.push({
-    // Css依赖配置项
+    // CSS 依赖配置项
     test: /\.(scss|sass|css)$/,
     use: [
       { loader: "style-loader" },
@@ -151,10 +151,12 @@ if (VARIABLE.isProduction) {
   });
 
   module.exports.plugins = (module.exports.plugins || []).concat([
-    // 终端面板插件
+    // 终端面板
     new DashboardPlugin(),
-    // 热更新
+    // 热更新 HMR
     new webpack.HotModuleReplacementPlugin(),
+    // 当开启 HMR 的时候使用该插件会显示模块的相对路径
+    new webpack.NamedModulesPlugin(),
     // 错误重启，不终止建构，但会在命令行中输出报错信息
     new webpack.NoEmitOnErrorsPlugin()
   ]);
