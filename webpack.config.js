@@ -3,6 +3,7 @@ const webpack = require('webpack')
     , HtmlWebpackPlugin = require('html-webpack-plugin')
     , ExtractTextPlugin = require("extract-text-webpack-plugin")
     , CleanWebpackPlugin = require('clean-webpack-plugin')
+    , DashboardPlugin = require('webpack-dashboard/plugin')
 
 module.exports = {
   // 入口文件配置项
@@ -150,6 +151,8 @@ if (VARIABLE.isProduction) {
   });
 
   module.exports.plugins = (module.exports.plugins || []).concat([
+    // 终端面板插件
+    new DashboardPlugin(),
     // 热更新
     new webpack.HotModuleReplacementPlugin(),
     // 错误重启，不终止建构，但会在命令行中输出报错信息

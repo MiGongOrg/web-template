@@ -2,7 +2,7 @@
   "name": "web-template",
   "description": "web template",
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dashboard -- webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack --progress -p"
   },
   "dependencies": {},
@@ -23,6 +23,7 @@
     "style-loader": "^0.20.2",
     "url-loader": "^1.0.1",
     "webpack": "^3.10.0",
+    "webpack-dashboard": "^1.1.1",
     "webpack-dev-server": "^2.11.2"
   }
 }
