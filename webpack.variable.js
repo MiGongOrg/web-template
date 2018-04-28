@@ -29,9 +29,9 @@ VARIABLE.buildDir = "./build"
  * @type {string | array | object}
  */
 
-VARIABLE.entry = [
-  VARIABLE.getPath("src/js/main")
-]
+VARIABLE.entry = {
+  'main': VARIABLE.getPath("src/js/main")
+}
 
 /**
  * 输出文件路径配置

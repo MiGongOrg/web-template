@@ -30,6 +30,7 @@ module.exports = {
       title: VARIABLE.htmlPlugin.title,
       filename: VARIABLE.htmlPlugin.filename,
       template: VARIABLE.htmlPlugin.template,
+      chunks: ['index'],
       hash: true,
       minify: {
         // 去除空格
@@ -38,7 +39,7 @@ module.exports = {
         removeComments: true
       }
     }),
-    // 提取公共代码
+    // 提取公共代码，如果使用多入口文件配置，请禁用 CommonsChunkPlugin
     new webpack.optimize.CommonsChunkPlugin({
       name: VARIABLE.CommonsChunkPlugin.name,
       filename: VARIABLE.CommonsChunkPlugin.filename,

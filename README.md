@@ -42,17 +42,21 @@ console.log(template)
 
 ##### 自定义多个入口文件，多文件打包分离
 
-- 修改 `webpack.variable.js` 中的 `VARIABLE.entry` 添加入口路径
+> 在使用之前需要移除 `webpack.optimize.CommonsChunkPlugin`
+
+- 修改 `webpack.variable.js` 中的 `VARIABLE.entry` 入口路径
 - 修改 `webpage.config.js` 添加多个 `new HtmlWebpackPlugin()`
 
-> 具体实例 `examples/entry.js`
+> 多个入口对应多个 `HtmlWebpackPlugin` 具体实例 `examples/entry.js`
 
-##### 全局变量配置
+##### 全局变量配置，自动加载模块
+
+如果你的项目中需要使用 `jQuery` `Underscore` 等第三方库，可以使用 `ProvidePlugin` 自动加载模块来实现，全局变量配置
 
 ```javascript
 // 提供全局的变量，在模块中使用无需用 require 或 inport 引入
 new webpack.ProvidePlugin({
-  _: "lodash",
-  $: "jquery"
+  $: "jquery",
+  jQuery: 'jquery'
 })
 ```
