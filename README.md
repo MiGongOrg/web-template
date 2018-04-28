@@ -40,7 +40,7 @@ console.log(template)
 
 ## 可选配置
 
-##### 自定义多个入口文件，多文件打包分离
+#### 自定义多个入口文件，多文件打包分离
 
 > 在使用之前需要移除 `webpack.optimize.CommonsChunkPlugin`
 
@@ -49,7 +49,7 @@ console.log(template)
 
 > 多个入口对应多个 `HtmlWebpackPlugin` 具体实例 `examples/entry.js`
 
-##### 全局变量配置，自动加载模块
+#### 全局变量配置，自动加载模块
 
 如果你的项目中需要使用 `jQuery` `Underscore` 等第三方库，可以使用 `ProvidePlugin` 自动加载模块来实现，全局变量配置
 
@@ -60,3 +60,15 @@ new webpack.ProvidePlugin({
   jQuery: 'jquery'
 })
 ```
+
+#### 使用 Less 修改配置项
+
+默认使用 `Sass` 如果使用 `Less` 需要安装依赖并修改配置项
+
+```bash
+# 安装 Less 和 Less loader
+npm install less --save-dev
+npm install less-loader --save-dev
+```
+
+> 修改 `webpage.config.js` 配置文件，具体实例 `examples/less.js`
