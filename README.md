@@ -61,14 +61,27 @@ new webpack.ProvidePlugin({
 })
 ```
 
-#### 使用 Less 修改配置项
+#### 使用 Less
 
 默认使用 `Sass` 如果使用 `Less` 需要安装依赖并修改配置项
 
 ```bash
-# 安装 Less 和 Less loader
-npm install less --save-dev
-npm install less-loader --save-dev
+# 安装 less、less-loader
+npm i -D less less-loader
 ```
 
 > 修改 `webpage.config.js` 配置文件，具体实例 `examples/less.js`
+
+#### 使用 Pug
+
+```bash
+# 安装 pug、pug-html-loader、raw-loader
+npm i -D pug pug-html-loader raw-loader
+```
+
+> 修改 `webpage.config.js` 配置文件，添加 Pug loader
+
+```javascript
+// pug loader 处理 pug 文件，转换成 html
+{ test: /\.pug/, loader: ['raw-loader', 'pug-html-loader'] }
+```
