@@ -61,7 +61,7 @@ new webpack.ProvidePlugin({
 })
 ```
 
-#### 使用 Less
+#### 使用 [Less](http://lesscss.org)
 
 默认使用 `Sass` 如果使用 `Less` 需要安装依赖并修改配置项
 
@@ -72,7 +72,7 @@ npm i -D less less-loader
 
 > 修改 `webpage.config.js` 配置文件，具体实例 `examples/less.js`
 
-#### 使用 Pug
+#### 使用 [Pug](https://pugjs.org)
 
 ```bash
 # 安装 pug、pug-html-loader、raw-loader
@@ -85,3 +85,29 @@ npm i -D pug pug-html-loader raw-loader
 // pug loader 处理 pug 文件，转换成 html
 { test: /\.pug/, loader: ['raw-loader', 'pug-html-loader'] }
 ```
+
+#### 使用 [CoffeeScript](http://coffeescript.org)
+
+```bash
+# 安装 coffeescript coffee-loader
+npm i -D coffeescript coffee-loader
+```
+
+> 修改 `webpage.config.js` 配置文件，添加 Coffee loader
+
+```javascript
+// CoffeeScript loader
+{
+  test: /\.coffee$/, 
+  use: [{
+    loader: 'coffee-loader',
+    options: { 
+      transpile: {
+        presets: ['env'] 
+      }
+    }
+  }]
+}
+```
+
+> 如何使用 CoffeeScript ? 查看具体实例 `examples/test.coffee`
