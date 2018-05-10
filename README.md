@@ -93,7 +93,7 @@ npm i -D pug pug-html-loader raw-loader
 npm i -D coffeescript coffee-loader
 ```
 
-> 修改 `webpage.config.js` 配置文件，添加 Coffee loader
+> 修改 `webpage.config.js` 配置文件，添加 CoffeeScript loader
 
 ```javascript
 // CoffeeScript loader
@@ -111,3 +111,45 @@ npm i -D coffeescript coffee-loader
 ```
 
 > 如何使用 CoffeeScript ? 查看具体实例 `examples/test.coffee`
+
+#### 使用 [TypeScript](http://www.typescriptlang.org/)
+
+```bash
+# 安装 typescript ts-loader@3.x
+# ts-loader 选择 3.x 版本是因为该项目使用 webpack 3)
+npm i -D typescript ts-loader@3.x
+```
+
+> 新建 `tsconfig.json` 文件，这是 TypeScript 编译配置
+
+```json
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "allowJs": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
+```
+
+> 修改 `webpage.config.js` 配置文件，添加 TypeScript loader
+
+```javascript
+{
+  test: /\.tsx?$/,
+  use: [{
+    loader: 'ts-loader'
+  }]
+}
+```
+
+> 如何使用 TypeScript ? 查看具体实例 `examples/test.ts`
