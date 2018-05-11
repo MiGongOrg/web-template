@@ -9,14 +9,27 @@
 
 // 配置多入口 type 使用 object
 
- VARIABLE.entry = {
+VARIABLE.entry = {
   'main': VARIABLE.getPath(".."),
   'test': VARIABLE.getPath("..")
 }
 
+VARIABLE.htmlPlugin = {
+  title: "Hello World",
+  filename: VARIABLE.getPath(VARIABLE.buildDir + "/index.html"),
+  template: VARIABLE.getPath("src/template/index.html"),
+
+  /**
+   * 新增输出文件路径，新增不同模板
+   */
+
+  testfilename: VARIABLE.getPath(VARIABLE.buildDir + "/test.html"),
+  testtemplate: VARIABLE.getPath("src/template/test.html")
+}
+
 /**
  * 修改 webpack.config.js 文件，新增 new HtmlWebpackPlugin()
- * 注：chunks
+ * 注：template 可以使用同个模板，但输出文件名需要不同
  */
 
 new HtmlWebpackPlugin({
