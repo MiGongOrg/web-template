@@ -34,7 +34,7 @@ module.exports = {
       hash: true,
       minify: {
         // 去除空格
-        collapseWhitespace: true
+        collapseWhitespace: true,
         // 删除注释
         removeComments: true
       }
