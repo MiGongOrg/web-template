@@ -30,7 +30,7 @@ module.exports = {
       title: VARIABLE.htmlPlugin.title,
       filename: VARIABLE.htmlPlugin.filename,
       template: VARIABLE.htmlPlugin.template,
-      chunks: ['index'],
+      chunks: ['main'],
       hash: true,
       minify: {
         // 去除空格
@@ -40,11 +40,11 @@ module.exports = {
       }
     }),
     // 提取公共代码，如果使用多入口文件配置，请禁用 CommonsChunkPlugin
-    new webpack.optimize.CommonsChunkPlugin({
-      name: VARIABLE.CommonsChunkPlugin.name,
-      filename: VARIABLE.CommonsChunkPlugin.filename,
-      minChunks: VARIABLE.CommonsChunkPlugin.minChunks,
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: VARIABLE.CommonsChunkPlugin.name,
+    //   filename: VARIABLE.CommonsChunkPlugin.filename,
+    //   minChunks: VARIABLE.CommonsChunkPlugin.minChunks,
+    // }),
     // 清空构建目录 ./build 文件夹下的所有文件
     new CleanWebpackPlugin(VARIABLE.buildDir)
   ],
